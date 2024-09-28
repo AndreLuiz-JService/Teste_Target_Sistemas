@@ -8,7 +8,7 @@ Clientes
 Telefones
     id_telefone (PK): Integer (auto-incremento)
     numero: String
-    tipo: String
+    id_tipo_telefone (FK): Integer (referencia a TiposTelefone.id_tipo_telefone)
     id_cliente (FK): Integer (referencia a Clientes.id_cliente)
 
 TiposTelefone
@@ -28,6 +28,7 @@ Clientes
     
 Telefones
     PK: id_telefone
+    FK: id_tipo_telefone (referencia TiposTelefone.id_tipo_telefone)
     FK: id_cliente (referencia Clientes.id_cliente)
 
 TiposTelefone
