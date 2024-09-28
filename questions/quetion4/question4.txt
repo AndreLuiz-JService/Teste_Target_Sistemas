@@ -1,0 +1,50 @@
+//Tabelas
+
+Clientes
+    id_cliente (PK): Integer (auto-incremento)
+    razao_social: String
+    estado: String (FK referenciando a tabela Estados)
+
+Telefones
+    id_telefone (PK): Integer (auto-incremento)
+    numero: String
+    tipo: String
+    id_cliente (FK): Integer (referencia a Clientes.id_cliente)
+
+TiposTelefone
+    id_tipo_telefone (PK): Integer (auto-incremento)
+    descricao: String
+
+Estados
+    id_estado (PK): Integer (auto-incremento)
+    sigla: String (ex: "SP")
+    nome: String
+
+// Chaves primaris e estrangeiras
+
+Clientes
+    PK: id_cliente
+    FK: estado (referencia Estados.sigla)
+    
+Telefones
+    PK: id_telefone
+    FK: id_cliente (referencia Clientes.id_cliente)
+
+TiposTelefone
+    PK: id_tipo_telefone
+
+Estados
+    PK: id_estado
+
+//Comando Sql
+SELECT 
+    c.id_cliente, 
+    c.razao_social, 
+    t.numero 
+FROM 
+    Clientes c
+JOIN 
+    Telefones t ON c.id_cliente = t.id_cliente
+WHERE 
+    c.estado = 'SP';
+
